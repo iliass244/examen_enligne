@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import TeacherDashboard from './components/TeacherDashboard';
 import ExamQuestions from './components/ExamQuestions';
+import StudentDashboard from './components/StudentDashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateExam from './components/CreateExam';
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />     
         <Route path="/create-exam" element={<CreateExam />} />
+        <Route path="/student-dashboard" element={<StudentDashboard />} />
         <Route path="/exam/:examId/questions" element={<ExamQuestions />} />
       </Routes>
     </Router>
