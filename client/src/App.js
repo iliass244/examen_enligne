@@ -6,11 +6,17 @@ import Login from './components/Login';
 import Register from './components/Register';
 import CreateExam from './components/CreateExam';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TeacherDashboard from './components/TeacherDashboard';
+
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
