@@ -7,6 +7,7 @@ import Register from './components/Register';
 import TeacherDashboard from './components/TeacherDashboard';
 import ExamQuestions from './components/ExamQuestions';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CreateExam from './components/CreateExam';
 
 
 
@@ -17,9 +18,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />     
+        <Route path="/create-exam" element={<CreateExam />} />
         <Route path="/exam/:examId/questions" element={<ExamQuestions />} />
-      
       </Routes>
     </Router>
   );
