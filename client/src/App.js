@@ -7,6 +7,7 @@ import Register from './components/Register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TeacherDashboard from './components/TeacherDashboard';
 
+
 const App = () => {
   return (
     <Router>
@@ -15,6 +16,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );

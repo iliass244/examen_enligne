@@ -89,4 +89,11 @@ body {
     border-radius: 5px;
     margin-bottom: 15px;
   }
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
   
