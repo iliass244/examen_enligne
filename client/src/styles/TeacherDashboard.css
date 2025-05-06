@@ -1,0 +1,92 @@
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  /* Container principal */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Titre principal */
+  h2 {
+    color: #004d4d;
+    margin-bottom: 20px;
+  }
+  
+  /* Bouton principal */
+  .btn-primary {
+    background-color: #004d4d;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #167e7e;
+  }
+  
+  /* Liste des examens */
+  .list-group {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Élément de la liste */
+  .list-group-item {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .list-group-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+  }
+  
+  /* Titres et textes dans chaque examen */
+  .list-group-item h3 {
+    margin: 0 0 10px 0;
+    color: #006666;
+  }
+  
+  .list-group-item h6 {
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .list-group-item p {
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Bouton de gestion */
+  .btn-secondary {
+    background-color: #444;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #666;
+  }
+  
+  /* Style pour les messages d’erreur */
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
