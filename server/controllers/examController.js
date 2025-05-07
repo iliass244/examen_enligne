@@ -45,7 +45,7 @@ exports.createExam = async (req, res) => {
     const unique_link = uuidv4();
     await pool.query(
       'INSERT INTO exams (title, description, public_cible, unique_link, enseignant_id) VALUES (?, ?, ?, ?, ?)',
-      [title, description, public_cibile, unique_link, teacherId]
+      [title, description, public_cible, unique_link, teacherId]
     );
 
     res.status(201).json({ message: 'Examen créé', unique_link });
