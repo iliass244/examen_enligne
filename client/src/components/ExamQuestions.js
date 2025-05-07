@@ -1,8 +1,8 @@
-/ Fichier : client/src/components/ExamQuestions.js
+// Fichier : client/src/components/ExamQuestions.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/ExamQuestions.css';
+//import '../styles/ExamQuestions.css';
 
 const ExamQuestions = () => {
   const { examId } = useParams();

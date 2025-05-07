@@ -16,7 +16,7 @@ const Exam = () => {
   const [geolocationActivated, setGeolocationActivated] = useState(false);
   const [geolocationError, setGeolocationError] = useState('');
 
-  // طلب بيانات الامتحان
+  // Demander des données d'examen
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -43,7 +43,7 @@ const Exam = () => {
       .catch((err) => setError(err.response?.data?.message || 'Erreur lors de la récupération de l\'examen'));
   }, [unique_link, navigate]);
 
-  // إدارة المؤقت
+  // Gestion du minuteur
   useEffect(() => {
     if (timeLeft > 0 && geolocationActivated && questions.length > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -59,7 +59,7 @@ const Exam = () => {
     }
   }, [timeLeft, geolocationActivated, questions, currentQuestionIndex, answers]);
 
-  // طلب تفعيل الجغرافيا
+// Demande d'activation de la géographie
   const requestGeolocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
