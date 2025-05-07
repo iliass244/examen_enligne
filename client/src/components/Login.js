@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import '../styles/Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -38,26 +39,22 @@ const Login = () => {
         {error && <div className="alert alert-danger">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
             <input
               type="email"
               className="form-control"
               id="email"
+              placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="mb-3 position-relative">
-            <label htmlFor="password" className="form-label">
-              Mot de passe
-            </label>
             <input
               type={showPassword ? 'text' : 'password'}
               className="form-control"
               id="password"
+              placeholder='Mot de passe'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -68,13 +65,14 @@ const Login = () => {
             ></i>
           </div>
           
-          <button type="submit" className="btn btn-primary login-btn">
+          <button type="submit" className="login-btn">
             Se connecter
           </button>
         </form>
+        <h4 className='dont-have-an-account'>Vous n'avez pas de compte?
         <Link to="/register" className="register-link">
-          Vous n'avez Pas de compte ? Inscrivez-vous
-        </Link>
+           Inscrivez-vous
+        </Link></h4>
       </div>
     </div>
   );
