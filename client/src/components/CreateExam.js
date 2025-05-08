@@ -59,7 +59,7 @@ const CreateExam = () => {
             type="text"
             name="public_cible"
             className="form-control"
-            placeholder="Public ciblé (ex: 2e année MIP)"
+            placeholder="Public ciblé (ex: 2e année MIP, S4, groupe A)"
             onChange={handleChange}
             required
           />

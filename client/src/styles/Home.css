@@ -35,10 +35,13 @@
   }
   
   .sign-in-btn {
+    width: 20%;
+    margin-top: 10px;
+    left: 10px;
     background-color: #ffffff;
     color: #007bff;
     padding: 12px 30px;
-    font-size: 1.1rem;
+    font-size: 10.3rem;
     font-weight: 500;
     border: 2px solid transparent;
     transition: all 0.3s;
@@ -52,10 +55,11 @@
   }
   
   .sign-up-btn {
+    width: 20%;
     background-color: transparent;
     color: #ffffff;
     padding: 12px 30px;
-    font-size: 1.1rem;
+    font-size: 10.1rem;
     font-weight: 500;
     border: 2px solid #ffffff;
     transition: all 0.3s;

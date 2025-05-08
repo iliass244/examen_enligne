@@ -1,5 +1,4 @@
-// Fichier : client/src/components/ExamQuestions.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 //import '../styles/ExamQuestions.css';
@@ -10,6 +9,7 @@ const ExamQuestions = () => {
   const [error, setError] = useState('');
   const [formMode, setFormMode] = useState(null);
   const [editingQuestionId, setEditingQuestionId] = useState(null);
+  const [newlyAddedQuestionId, setNewlyAddedQuestionId] = useState(null);
   const [formData, setFormData] = useState({
     type: 'directe',
     enonce: '',
@@ -22,6 +22,7 @@ const ExamQuestions = () => {
     duree: 0,
   });
   const navigate = useNavigate();
+  const formRef = useRef(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -39,6 +40,12 @@ const ExamQuestions = () => {
       })
       .catch((err) => setError(err.response?.data?.message || 'Erreur lors de la récupération des questions'));
   }, [examId, navigate]);
+
+  useEffect(() => {
+    if (formMode && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [formMode, editingQuestionId]);
 
   const handleEdit = (question) => {
     setFormMode('edit');
@@ -161,7 +168,9 @@ const ExamQuestions = () => {
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setQuestions([...questions, { ...payload, id: response.data.id }]);
+        const newQuestion = { ...payload, id: response.data.id };
+        setQuestions([...questions, newQuestion]);
+        setNewlyAddedQuestionId(response.data.id);
         alert('Question ajoutée avec succès !');
       } else if (formMode === 'edit') {
         const response = await axios.put(
@@ -169,15 +178,15 @@ const ExamQuestions = () => {
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setQuestions(
-          questions.map((q) =>
-            q.id === editingQuestionId ? { ...q, ...payload } : q
-          )
-        );
+        const updatedQuestion = { ...payload, id: editingQuestionId };
+        const updatedQuestions = questions.filter((q) => q.id !== editingQuestionId);
+        setQuestions([...updatedQuestions, updatedQuestion]);
+        setNewlyAddedQuestionId(editingQuestionId);
         alert('Question modifiée avec succès !');
       }
 
       setFormMode(null);
+      setEditingQuestionId(null);
       setFormData({
         type: 'directe',
         enonce: '',
@@ -195,6 +204,139 @@ const ExamQuestions = () => {
     }
   };
 
+  const renderQuestionForm = () => (
+    <div className="question-form" ref={formRef}>
+      <h3>{formMode === 'add' ? 'Ajouter une question' : 'Modifier la question'}</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Type</label>
+          <select
+            name="type"
+            className="form-select"
+            value={formData.type}
+            onChange={handleInputChange}
+          >
+            <option value="directe">Directe</option>
+            <option value="qcm">QCM</option>
+          </select>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Énoncé</label>
+          <textarea
+            name="enonce"
+            className="form-control"
+            value={formData.enonce}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        {formData.type === 'directe' && (
+          <>
+            <div className="mb-3">
+              <label className="form-label">Réponse correcte</label>
+              <input
+                type="text"
+                name="reponse_correcte"
+                className="form-control"
+                value={formData.reponse_correcte}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Tolérance</label>
+              <input
+                type="number"
+                name="tolerance"
+                className="form-control"
+                value={formData.tolerance}
+                onChange={handleInputChange}
+              />
+            </div>
+          </>
+        )}
+        {formData.type === 'qcm' && (
+          <>
+            <div className="mb-3">
+              <label className="form-label">Options (4 maximum)</label>
+              {formData.options.map((option, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  className="form-control mb-2"
+                  value={option}
+                  onChange={(e) => handleOptionsChange(index, e.target.value)}
+                  placeholder={`Option ${index + 1}`}
+                />
+              ))}
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Bonne(s) réponse(s)</label>
+              {formData.options.map((option, index) => (
+                <div key={index} className="form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    checked={formData.bonne_reponse.includes(option)}
+                    onChange={() => handleBonneReponseChange(option)}
+                  />
+                  <label className="form-check-label">{option || `Option ${index + 1}`}</label>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+        <div className="mb-3">
+          <label className="form-label">Média (URL)</label>
+          <input
+            type="text"
+            name="media"
+            className="form-control"
+            value={formData.media}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Note</label>
+          <input
+            type="number"
+            name="note"
+            className="form-control"
+            value={formData.note}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Durée (secondes)</label>
+          <input
+            type="number"
+            name="duree"
+            className="form-control"
+            value={formData.duree}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-actions">
+          <button type="submit" className="btn btn-primary submit-btn">
+            {formMode === 'add' ? 'Ajouter' : 'Enregistrer'}
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary cancel-btn"
+            onClick={() => {
+              setFormMode(null);
+              setEditingQuestionId(null);
+            }}
+          >
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
   return (
     <div className="exam-questions-container">
       <h2>Gestion des questions</h2>
@@ -205,11 +347,17 @@ const ExamQuestions = () => {
         </button>
       </div>
       {questions.length === 0 ? (
-        <p className="no-questions">Aucune question pour cet examen.</p>
+        <div>
+          <p className="no-questions">Aucune question pour cet examen.</p>
+          {formMode === 'add' && renderQuestionForm()}
+        </div>
       ) : (
         <ul className="list-group questions-list">
-          {questions.map((question) => (
-            <li key={question.id} className="list-group-item question-item">
+          {questions.map((question, index) => (
+            <li
+              key={question.id}
+              className={`list-group-item question-item ${question.id === newlyAddedQuestionId ? 'highlight' : ''}`}
+            >
               <div>
                 <p><strong>Énoncé:</strong> {question.enonce}</p>
                 <p><strong>Type:</strong> {question.type}</p>
@@ -239,139 +387,11 @@ const ExamQuestions = () => {
                   Supprimer
                 </button>
               </div>
+              {formMode === 'edit' && editingQuestionId === question.id && renderQuestionForm()}
+              {formMode === 'add' && index === questions.length - 1 && renderQuestionForm()}
             </li>
           ))}
         </ul>
-      )}
-
-      {formMode && (
-        <div className="question-form">
-          <h3>{formMode === 'add' ? 'Ajouter une question' : 'Modifier la question'}</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">Type</label>
-              <select
-                name="type"
-                className="form-select"
-                value={formData.type}
-                onChange={handleInputChange}
-              >
-                <option value="directe">Directe</option>
-                <option value="qcm">QCM</option>
-              </select>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Énoncé</label>
-              <textarea
-                name="enonce"
-                className="form-control"
-                value={formData.enonce}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            {formData.type === 'directe' && (
-              <>
-                <div className="mb-3">
-                  <label className="form-label">Réponse correcte</label>
-                  <input
-                    type="text"
-                    name="reponse_correcte"
-                    className="form-control"
-                    value={formData.reponse_correcte}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Tolérance</label>
-                  <input
-                    type="number"
-                    name="tolerance"
-                    className="form-control"
-                    value={formData.tolerance}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </>
-            )}
-            {formData.type === 'qcm' && (
-              <>
-                <div className="mb-3">
-                  <label className="form-label">Options (4 maximum)</label>
-                  {formData.options.map((option, index) => (
-                    <input
-                      key={index}
-                      type="text"
-                      className="form-control mb-2"
-                      value={option}
-                      onChange={(e) => handleOptionsChange(index, e.target.value)}
-                      placeholder={`Option ${index + 1}`}
-                    />
-                  ))}
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Bonne(s) réponse(s)</label>
-                  {formData.options.map((option, index) => (
-                    <div key={index} className="form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        checked={formData.bonne_reponse.includes(option)}
-                        onChange={() => handleBonneReponseChange(option)}
-                      />
-                      <label className="form-check-label">{option || `Option ${index + 1}`}</label>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-            <div className="mb-3">
-              <label className="form-label">Média (URL)</label>
-              <input
-                type="text"
-                name="media"
-                className="form-control"
-                value={formData.media}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Note</label>
-              <input
-                type="number"
-                name="note"
-                className="form-control"
-                value={formData.note}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Durée (secondes)</label>
-              <input
-                type="number"
-                name="duree"
-                className="form-control"
-                value={formData.duree}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-actions">
-              <button type="submit" className="btn btn-primary submit-btn">
-                {formMode === 'add' ? 'Ajouter' : 'Enregistrer'}
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary cancel-btn"
-                onClick={() => setFormMode(null)}
-              >
-                Annuler
-              </button>
-            </div>
-          </form>
-        </div>
       )}
     </div>
   );
