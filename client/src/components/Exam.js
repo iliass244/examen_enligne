@@ -156,7 +156,8 @@ const Exam = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="container mt-5">
+    <div className="from-exame">
+    <div className="container-examen">
       <h2>{exam.title}</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       <p>Temps restant: {timeLeft} secondes</p>
@@ -204,6 +205,7 @@ const Exam = () => {
       <button className="btn btn-primary mt-3" onClick={handleNextQuestion}>
         {currentQuestionIndex < questions.length - 1 ? 'Question suivante' : 'Soumettre l\'examen'}
       </button>
+    </div>
     </div>
   );
 };

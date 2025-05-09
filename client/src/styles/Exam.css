@@ -53,3 +53,37 @@
     border-radius: 6px;
     margin-bottom: 20px;
   }
+
+  .from-exame{
+  margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ebf1f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+  .container-examen{
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    margin-bottom: 50px;
+    width: 800px;
+    height: 550px;
+  }
+
+  .container-examen h2{
+    margin-bottom: 50px;
+    color: #109097;
+    font-size: 40px;
+    margin-left: 270px;
+  }
+
+  .container-examen p,h4 {
+    color: #09585c;
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
