@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -34,94 +35,96 @@ const Register = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container-registre">
+      <div className="register-from">
       <h2>Inscription</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+      <form className='from-register' onSubmit={handleSubmit}>
+        <div className="mb-4">
           <input
             type="email"
             name="email"
-            className="form-control"
+            className="control-from"
             placeholder="Email"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="password"
             name="password"
-            className="form-control"
+            className="control-from"
             placeholder="Mot de passe"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="text"
             name="nom"
-            className="form-control"
+            className="control-from"
             placeholder="Nom"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="text"
             name="prenom"
-            className="form-control"
+            className="control-from"
             placeholder="Prénom"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="date"
             name="date_naissance"
-            className="form-control"
+            className="control-from"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
-          <select name="sexe" className="form-control" onChange={handleChange} required>
+        <div className="mb-4">
+          <select name="sexe" className="control-from" onChange={handleChange} required>
             <option value="">Sélectionner le sexe</option>
             <option value="M">Masculin</option>
             <option value="F">Féminin</option>
           </select>
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="text"
             name="etablissement"
-            className="form-control"
+            className="control-from"
             placeholder="Établissement"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <input
             type="text"
             name="filiere"
-            className="form-control"
+            className="control-from"
             placeholder="Filière"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
-          <select name="role" className="form-control" onChange={handleChange} required>
+        <div className="mb-4">
+          <select name="role" className="control-from"  onChange={handleChange} required>
             <option value="etudiant">Étudiant</option>
             <option value="enseignant">Enseignant</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">S'inscrire</button>
+        <button type="submit" className="Register-btn">S'inscrire</button>
       </form>
+      </div>
     </div>
   );
 };

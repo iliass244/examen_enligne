@@ -32,40 +32,43 @@ const CreateExam = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Créer un examen</h2>
+    <div className="container-createexame">
+    <div className="from-create">
+      <h2 className='titre-create'>Créer un examen</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-5">
           <input
             type="text"
             name="title"
-            className="form-control"
+            className="create-from"
             placeholder="Titre de l'examen"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="mb-3">
+        
+        <div className="mb-5">
           <textarea
             name="description"
-            className="form-control"
+            className="create-from"
             placeholder="Description"
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-5">
           <input
             type="text"
             name="public_cible"
-            className="form-control"
+            className="create-from"
             placeholder="Public ciblé (ex: 2e année MIP, S4, groupe A)"
             onChange={handleChange}
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Créer</button>
+        <button type="submit" className="btn-create">Créer</button>
       </form>
+    </div>
     </div>
   );
 };

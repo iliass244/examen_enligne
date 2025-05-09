@@ -1,142 +1,45 @@
-/* Fichier : client/src/styles/ExamQuestions.css */
+.container-createexame{
+   margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ebf1f7;
+    font-family: Arial, sans-serif;
+}
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f2f5;
-  }
-  
-  .exam-questions-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 40px auto;
-    background-color: white;
-    padding: 40px;
+.from-create {
+    width: 700px;
+    height: 550px;
+    padding: 70px;
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(85, 158, 102, 0.1);
   }
-  
-  h2, h3 {
-    color: #09585c;
-    margin-bottom: 25px;
-  }
-  
-  .add-question-btn {
-    background-color: #09585c;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .add-question-btn:hover {
-    background-color: #0b7075;
-  }
-  
-  .no-questions {
-    color: #777;
-    font-style: italic;
-    margin-top: 20px;
-  }
-  
-  .questions-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-  }
-  
-  .question-item {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background-color: #fafafa;
-    position: relative;
-  }
-  
-  .question-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-  }
-  
-  .edit-btn, .delete-btn {
-    font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  
-  .edit-btn {
-    background-color: #ffc107;
-    border: none;
-    color: #333;
-  }
-  
-  .delete-btn {
-    background-color: #dc3545;
-    border: none;
-    color: white;
-  }
-  
-  .question-form {
-    margin-top: 40px;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fdfdfd;
-  }
-  
-  .question-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  input,
-  textarea,
-  select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    width: 100%;
+
+
+  .create-from{
+     width: 100%;
+    padding: 8px;
     box-sizing: border-box;
+    height: 55px;
   }
-  
-  .form-label {
-    font-weight: bold;
-    margin-bottom: 6px;
-    display: block;
-    color: #333;
+  .titre-create{
+     text-align: center;
+  font-size: 42px;
+  color: #09585c;
+  font-weight: 700;
+  margin-bottom: 40px;
   }
-  
-  .form-check {
-    margin-bottom: 10px;
-  }
-  
-  .form-actions {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .submit-btn {
+
+  .btn-create{
+    width: 100%;
+    padding: 10px;
     background-color: #09585c;
-    color: white;
-    font-weight: bold;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  .cancel-btn {
-    background-color: #6c757d;
     color: white;
-    border: none;
-    padding: 10px 20px;
     border-radius: 5px;
+    cursor: pointer;
+    height: 55px;
   }
+

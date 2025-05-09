@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-//import '../styles/ExamQuestions.css';
+import '../styles/ExamQuestions.css';
 
 const ExamQuestions = () => {
   const { examId } = useParams();
@@ -208,11 +208,11 @@ const ExamQuestions = () => {
     <div className="question-form" ref={formRef}>
       <h3>{formMode === 'add' ? 'Ajouter une question' : 'Modifier la question'}</h3>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-9">
           <label className="form-label">Type</label>
           <select
             name="type"
-            className="form-select"
+            className="form-question"
             value={formData.type}
             onChange={handleInputChange}
           >
@@ -220,11 +220,11 @@ const ExamQuestions = () => {
             <option value="qcm">QCM</option>
           </select>
         </div>
-        <div className="mb-3">
+        <div className="mb-9">
           <label className="form-label">Énoncé</label>
           <textarea
             name="enonce"
-            className="form-control"
+            className="form-question"
             value={formData.enonce}
             onChange={handleInputChange}
             required
@@ -232,23 +232,23 @@ const ExamQuestions = () => {
         </div>
         {formData.type === 'directe' && (
           <>
-            <div className="mb-3">
+            <div className="mb-9">
               <label className="form-label">Réponse correcte</label>
               <input
                 type="text"
                 name="reponse_correcte"
-                className="form-control"
+                className="form-question"
                 value={formData.reponse_correcte}
                 onChange={handleInputChange}
                 required
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-9">
               <label className="form-label">Tolérance</label>
               <input
                 type="number"
                 name="tolerance"
-                className="form-control"
+                className="form-question"
                 value={formData.tolerance}
                 onChange={handleInputChange}
               />
@@ -257,20 +257,20 @@ const ExamQuestions = () => {
         )}
         {formData.type === 'qcm' && (
           <>
-            <div className="mb-3">
+            <div className="mb-9">
               <label className="form-label">Options (4 maximum)</label>
               {formData.options.map((option, index) => (
                 <input
                   key={index}
                   type="text"
-                  className="form-control mb-2"
+                  className="form-question"
                   value={option}
                   onChange={(e) => handleOptionsChange(index, e.target.value)}
                   placeholder={`Option ${index + 1}`}
                 />
               ))}
             </div>
-            <div className="mb-3">
+            <div className="mb-9">
               <label className="form-label">Bonne(s) réponse(s)</label>
               {formData.options.map((option, index) => (
                 <div key={index} className="form-check">
@@ -286,7 +286,7 @@ const ExamQuestions = () => {
             </div>
           </>
         )}
-        <div className="mb-3">
+        <div className="mb-9">
           <label className="form-label">Média (URL)</label>
           <input
             type="text"
@@ -296,7 +296,7 @@ const ExamQuestions = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-9">
           <label className="form-label">Note</label>
           <input
             type="number"
@@ -307,7 +307,7 @@ const ExamQuestions = () => {
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-9">
           <label className="form-label">Durée (secondes)</label>
           <input
             type="number"

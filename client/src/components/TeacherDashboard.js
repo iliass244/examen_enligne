@@ -30,13 +30,15 @@ const TeacherDashboard = () => {
   }, [navigate]);
 
   return (
-    <div className="container mt-5">
+    <div className="container-teacher">
+    <div className="from-teacher">
       <h2>Espace Enseignant</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-      <Link to="/create-exam" className="btn btn-primary mb-3">
+      <Link to="/create-exam" className="btn-cree">
         Créer un nouvel examen
       </Link>
-      <h3>Vos examens</h3>
+      </div>
+      <h3 className="titre-examen">Vos examens</h3>
       {exams.length === 0 ? (
         <p>Aucun examen pour le moment</p>
       ) : (
@@ -54,6 +56,7 @@ const TeacherDashboard = () => {
           ))}
         </ul>
       )}
+    
     </div>
   );
 };

@@ -1,0 +1,68 @@
+.container-registre {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url(../photos/exam.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.register-from{
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin-left: 270px;
+}
+
+.register-from h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 42px;
+  color: #054238;
+  font-weight: 700;
+}
+.from-register {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.mb-4{
+  position: relative;
+}
+
+.control-from {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  height: 45px;
+}
+
+
+.Register-btn {
+  grid-column: 1 / -1;
+  padding: 12px;
+  background-color: #054238;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 22;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.Register-btn:hover {
+  background-color: #ddd;
+}
+

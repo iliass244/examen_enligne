@@ -135,18 +135,20 @@ const Exam = () => {
 
   if (!geolocationActivated) {
     return (
-      <div className="container mt-5 text-center">
+      <div className="local">
+      <div className="container-local">
         <h2>Activer la géolocalisation</h2>
-        <p>
+        <p className="mt-7">
           Pour commencer l'examen, vous devez activer la géolocalisation afin de vérifier votre position.
         </p>
         {geolocationError && <div className="alert alert-warning">{geolocationError}</div>}
-        <button className="btn btn-primary" onClick={requestGeolocation}>
+        <button className="btn-local" onClick={requestGeolocation}>
           Activer la géolocalisation
         </button>
-        <p className="mt-3">
+        <p className="mt-7">
           Si la géolocalisation est bloquée, accédez aux paramètres du site via l'icône de verrouillage dans la barre d'adresse et autorisez l'accès à la localisation.
         </p>
+      </div>
       </div>
     );
   }

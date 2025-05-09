@@ -8,8 +8,13 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.exam-results-container h2 {
-  color: #343a40;
+.exam-results-container h2 ,h3{
+  color: #037a7a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.titre-detail{
+  color: #037a7a;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -48,7 +53,7 @@
 }
 
 .question-item h4 {
-  color: #343a40;
+  color: #2b5b8b;
   margin-bottom: 10px;
 }
 

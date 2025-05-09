@@ -1,5 +1,5 @@
 /* Style global */
-body {
+.container-teacher {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
@@ -7,34 +7,50 @@ body {
   }
   
   /* Container principal */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .from-teacher  {
+   background-color: #ffffff;
+  padding: 35px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
   }
+
+  .from-teacher h2 {
+  margin: 0 0 10px 0;
+  font-size: 36px;
+  color: #004d4d;
+}
+
+  .btn-cree {
+    font-size: 20px;
+  padding: 10px 20px;
+  background-color: #004d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
   
-  /* Titre principal */
-  h2 {
-    color: #004d4d;
-    margin-bottom: 20px;
-  }
-  
-  /* Bouton principal */
-  .btn-primary {
-    background-color: #004d4d;
-    border: none;
-  }
-  
-  .btn-primary:hover {
+  .btn-cree:hover {
     background-color: #167e7e;
   }
   
-  /* Liste des examens */
+  .titre-examen{
+     font-size: 36px;
+  color: #004d4d;
+  }
+
+  
+  
+ 
   .list-group {
     list-style: none;
     padding: 0;
   }
   
-  /* Élément de la liste */
+  
   .list-group-item {
     background-color: #ffffff;
     padding: 20px;
@@ -50,44 +66,22 @@ body {
     background-color: #f9f9f9;
   }
   
-  /* Titres et textes dans chaque examen */
   .list-group-item h3 {
     margin: 0 0 10px 0;
-    color: #006666;
+    color: #006666; 
+    font-size: 30px;
   }
   
   .list-group-item h6 {
     color: #777;
     margin-bottom: 10px;
+    font-size: 1.2em;
   }
   
   .list-group-item p {
-    color: #555;
-    font-size: 14px;
+    color: #000;
+    font-size: 17px;
   }
   
-  /* Bouton de gestion */
-  .btn-secondary {
-    background-color: #444;
-    color: white;
-    border: none;
-    margin-top: 10px;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #666;
-  }
-  
-  /* Style pour les messages d’erreur */
-  .alert-danger {
-    color: #721c24;
-    background-color: #f8d7da;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
  
   

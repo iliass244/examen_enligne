@@ -20,7 +20,7 @@ import '../styles/Home.css';
              </Link>
         </div>
       </section>
-      {/* Section fonctionnalités*/}
+      {/* قسم المميزات */}
       <section className="features-section">
         <h2>Pourquoi choisir ExamOnline ?</h2>
         <div className="features-grid">
@@ -42,7 +42,7 @@ import '../styles/Home.css';
         </div>
       </section>
 
-      {/* Département d'appel à l'action*/}
+      {/* قسم دعوة للعمل */}
       <section className="cta-section">
         <h2>Prêt à commencer ?</h2>
         <p>Rejoignez des milliers d'enseignants et d'étudiants sur ExamOnline dès aujourd'hui !</p>

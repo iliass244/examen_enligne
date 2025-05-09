@@ -46,7 +46,7 @@ const ExamResults = () => {
         <p><strong>Score obtenu :</strong> {results.score} / {results.max_score}</p>
         <p><strong>Pourcentage :</strong> {results.percentage}%</p>
       </div>
-      <h3>Détails des réponses</h3>
+      <h3 className="titre-detail">Détails des réponses</h3>
       <div className="questions-list">
         {results.detailed_results.map((result, index) => (
           <div key={result.question_id} className={`question-item ${result.is_correct ? 'correct' : 'incorrect'}`}>

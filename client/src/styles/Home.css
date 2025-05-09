@@ -1,13 +1,15 @@
 /* Fichier : client/src/styles/Home.css */
 
+/* تنسيق الحاوية الرئيسية */
 .home-container {
     background-color: #f4f7fa;
     min-height: 100vh;
     overflow-x: hidden;
   }
   
+  /* قسم الترحيب */
   .hero-section {
-    background:#09585c; 
+    background:#09585c; /*linear-gradient(135deg, #007bff 0%, #00c4b4 100%);*/
     color: #ffffff;
     text-align: center;
     padding: 80px 20px;
@@ -35,13 +37,10 @@
   }
   
   .sign-in-btn {
-    width: 20%;
-    margin-top: 10px;
-    left: 10px;
     background-color: #ffffff;
     color: #007bff;
     padding: 12px 30px;
-    font-size: 10.3rem;
+    font-size: 1.1rem;
     font-weight: 500;
     border: 2px solid transparent;
     transition: all 0.3s;
@@ -55,11 +54,10 @@
   }
   
   .sign-up-btn {
-    width: 20%;
     background-color: transparent;
     color: #ffffff;
     padding: 12px 30px;
-    font-size: 10.1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     border: 2px solid #ffffff;
     transition: all 0.3s;
@@ -71,6 +69,7 @@
     transform: translateY(-3px);
   }
   
+  /* قسم المميزات */
   .features-section {
     padding: 60px 20px;
     text-align: center;
@@ -120,6 +119,7 @@
     color: #6c757d;
   }
   
+  /* قسم دعوة للعمل */
   .cta-section {
     background-color: #343a40;
     color: #ffffff;
@@ -155,6 +155,7 @@
     transform: translateY(-3px);
   }
   
+  /* تصميم متجاوب */
   @media (max-width: 768px) {
     .hero-section {
       padding: 60px 15px;

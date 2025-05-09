@@ -41,7 +41,7 @@ const Login = () => {
           <div className="mb-3">
             <input
               type="email"
-              className="form-control"
+              className="form-login"
               id="email"
               placeholder='Email'
               value={email}
@@ -49,10 +49,10 @@ const Login = () => {
               required
             />
           </div>
-          <div className="mb-3 position-relative">
+          <div className="mb-3">
             <input
               type={showPassword ? 'text' : 'password'}
-              className="form-control"
+              className="form-login"
               id="password"
               placeholder='Mot de passe'
               value={password}
