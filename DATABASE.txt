@@ -1,0 +1,70 @@
+CREATE DATABASE examen_enligne;
+
+-- Table users
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  nom VARCHAR(100) NOT NULL,
+  prenom VARCHAR(100) NOT NULL,
+  date_naissance DATE NOT NULL,
+  sexe ENUM('M', 'F') NOT NULL,
+  etablissement VARCHAR(255) NOT NULL,
+  filiere VARCHAR(100) NOT NULL,
+  role ENUM('etudiant', 'enseignant') NOT NULL
+);
+
+
+CREATE TABLE exams (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  teacher_id INT,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  public_cible VARCHAR(255) NOT NULL,
+  unique_link VARCHAR(255) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (teacher_id) REFERENCES users(id)
+);
+
+
+CREATE TABLE questions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  exam_id INT,
+  type ENUM('directe', 'qcm') NOT NULL,
+  enonce TEXT NOT NULL,
+  media VARCHAR(255),
+  options JSON,
+  reponse_correcte TEXT,
+  bonne_reponse JSON,
+  note INT NOT NULL,
+  duree INT NOT NULL,
+  tolerance INT DEFAULT 0,
+  explanation TEXT,
+  correct_code TEXT,
+  FOREIGN KEY (exam_id) REFERENCES exams(id)
+);
+
+CREATE TABLE student_answers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  student_id INT,
+  exam_id INT,
+  question_id INT,
+  reponse TEXT,
+  score_obtenu INT DEFAULT 0,
+  geolocation POINT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (student_id) REFERENCES users(id),
+  FOREIGN KEY (exam_id) REFERENCES exams(id),
+  FOREIGN KEY (question_id) REFERENCES questions(id)
+);
+
+CREATE TABLE exam_results (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  exam_id INT,
+  student_id INT,
+  score INT NOT NULL,
+  max_score INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (exam_id) REFERENCES exams(id),
+  FOREIGN KEY (student_id) REFERENCES users(id)
+);
